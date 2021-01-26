@@ -22,34 +22,33 @@ public class Q10845 {
 				int val =  Integer.parseInt(input.split(" ")[1]);
 				// offer queue애 객채 저장
 				q.offer(val);
-				sb.append(val);
+				//sb.append(val);
 				last = val;
 			}else if(input.equals("pop")) {
-				if(!q.isEmpty()) {
-					sb.append(q.poll());
+				if(q.isEmpty()) {
+					sb.append("-1 \n");
 				}else {
-					sb.append(-1);
+					sb.append(q.poll()+"\n");
 				}
-				sb.append(-1);
 			}else if(input.equals("size")) {
-				sb.append(q.size());
+				sb.append(q.size()+"\n");
 			}else if(input.equals("empty")) {
 				if(q.isEmpty()) {
-					sb.append(1);
+					sb.append("1 \n");
 				}else {
-					sb.append(0);
+					sb.append("0 \n");
 				}
 			}else if(input.equals("front")) {
 				if(q.isEmpty()) {
-					sb.append(-1);
+					sb.append("-1 \n");
 				}else {
-					sb.append(q.peek());
+					sb.append(q.peek()+"\n");
 				}
 			}else { // back
 				if(q.isEmpty()) {
-					sb.append(-1);
+					sb.append("-1 \n");
 				}else {
-					sb.append(last);
+					sb.append(last+"\n");
 				}
 			}
 		}
