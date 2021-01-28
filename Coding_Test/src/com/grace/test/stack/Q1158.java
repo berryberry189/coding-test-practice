@@ -26,18 +26,13 @@ public class Q1158 {
 				}else {
 					q.offer(q.poll());
 				}
-			}
-			
+			}			
 		}
-		sb.deleteCharAt(sb.toString().lastIndexOf(","));
-		sb.toString().trim();
+		sb.setLength(sb.length()-2);
 		sb.append(">");
-		
 		bw.write(sb.toString());
 		br.close();
 		bw.flush();
 		bw.close();
-		
 	}
-
 }
