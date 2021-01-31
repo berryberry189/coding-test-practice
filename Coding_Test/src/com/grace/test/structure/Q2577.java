@@ -1,4 +1,4 @@
-package com.grace.test.stack;
+package com.grace.test.structure;
 
 import java.io.*;
 public class Q2577 {
