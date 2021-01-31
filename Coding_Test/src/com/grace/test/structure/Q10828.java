@@ -1,9 +1,10 @@
-package com.grace.test.stack;
+package com.grace.test.structure;
 
 import java.io.*;
 import java.util.*;
 public class Q10828 {
     public static void main(String[] args) throws IOException {
+    	// 스택
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
         Stack<Integer> stack = new Stack<Integer>();
