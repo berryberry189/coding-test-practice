@@ -1,4 +1,4 @@
-package com.grace.test.structure;
+package com.grace.test.math;
 
 import java.io.*;
 import java.util.*;

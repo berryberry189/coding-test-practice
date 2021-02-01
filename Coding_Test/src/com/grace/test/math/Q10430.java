@@ -1,4 +1,4 @@
-package com.grace.test.structure;
+package com.grace.test.math;
 
 import java.io.*;
 public class Q10430 {
