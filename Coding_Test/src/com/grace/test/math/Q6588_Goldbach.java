@@ -1,7 +1,7 @@
 package com.grace.test.math;
 
 import java.io.*;
-public class Q6588 {
+public class Q6588_Goldbach {
 	public static void main(String[] args) throws Exception {
 		// 골드바흐의 추측 -- 다시 봐야함
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
