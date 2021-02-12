@@ -19,7 +19,5 @@ public class Q10809 {
 		for(int val : arr) {
 			System.out.print(val + " ");
 		}
-		
-
 	}
 }
