@@ -2,7 +2,7 @@ package com.grace.test.programmers;
 
 import java.util.*;
 
-public class Dev_3 {
+public class Commerce_3 {
 	static int n = 4;
 	static int cnt, last;
 	static int[] cntArr = new int[n+1];
@@ -30,19 +30,27 @@ public class Dev_3 {
 		
 		dfs(1);
 		
-		System.out.println(cnt);
+		for(int i=0; i<cntArr.length; i++) {
+			System.out.println(cntArr[i]);
+		}
 
 	}
 	static void dfs(int v) {
+		/**
+		 int[][] train = {{1,2},{1,3},{2,4}}; 
+		 int[] passenger = {2,1,2,2};
+		 */
 		visited[v] = true;
+		cnt += pg.get(v-1);
 		for (int i=1; i<=n; i++) {
 			if (graph[v][i] == 1 && visited[i] == false) { 
-			// 간선이 있고 방문한 적이 없으면
-				System.out.println("--------" + v + "--------");
-				cnt += pg.get(i);
+				// 간선이 있고 방문한 적이 없으면
+				cnt += pg.get(i-1);
 				dfs(i);
 			}
 		}
+		cntArr[v-1] = cnt;
+		cnt = 0;
 		
 	}
 
