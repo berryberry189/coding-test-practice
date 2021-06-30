@@ -3,6 +3,7 @@ package com.grace.test.programmers;
 import java.util.HashMap;
 
 public class Q단체사진찍기 {
+	
 	// https://programmers.co.kr/learn/courses/30/lessons/1835
 	// 참고 : https://onejunu.tistory.com/92
 	
