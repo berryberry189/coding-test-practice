@@ -30,3 +30,66 @@ RETURN (
       LIMIT 1 OFFSET N
     );
 END
+
+-- https://leetcode.com/problems/employees-earning-more-than-their-managers/
+-- Employees Earning More Than Their Managers
+SELECT Name AS Employee
+FROM
+    (SELECT A.Id, A.Name, A.Salary, A.ManagerId, B.Salary AS ManagerSalary
+     FROM Employee A
+     JOIN Employee B
+     ON B.Id = A.ManagerId) X
+WHERE X.Salary >= X.ManagerSalary
+----
+SELECT A.Name AS Employee
+JOIN Employee B
+ON B.Id = A.ManagerId
+WHERE A.Salary > B.Salary
+
+-- https://leetcode.com/problems/duplicate-emails/
+-- Duplicate Emails
+SELECT Email
+FROM (SELECT Email, count(Email) AS CNT
+      FROM Person
+      GROUP BY Email) X
+WHERE CNT > 1
+----
+SELECT Email
+FROM Person
+GROUP BY Email
+HAVING count(*) > 1
+
+-- https://leetcode.com/problems/customers-who-never-order/
+-- Customers Who Never Order
+SELECT Name AS Customers
+FROM Customers
+WHERE Id NOT IN (SELECT CustomerId
+                 FROM Orders)
+----
+SELECT A.Name AS Customers
+FROM Customers A
+LEFT JOIN Orders B
+ON B.CustomerId = A.Id
+WHERE B.Id is null
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
