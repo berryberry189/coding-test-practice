@@ -72,6 +72,32 @@ LEFT JOIN Orders B
 ON B.CustomerId = A.Id
 WHERE B.Id is null
 
+-- https://leetcode.com/problems/delete-duplicate-emails/submissions/
+-- Delete Duplicate Emails
+DELETE p1
+FROM Person p1, Person p2
+WHERE p1.Email = p2.Email
+AND p1.Id > p2.Id
+
+-- https://leetcode.com/problems/rising-temperature/submissions/
+-- Rising Temperature
+SELECT w1.Id AS Id
+FROM Weather w1, Weather w2
+WHERE w1.RecordDate = w2.RecordDate + INTERVAL 1 DAY
+AND w1.temperature > w2.temperature
+
+-- https://leetcode.com/problems/big-countries/submissions/
+-- Big Countries
+SELECT name, population, area
+FROM World
+WHERE population > 25000000 OR area > 3000000
+-- ⇩ 왕빠름,,!
+SELECT name, population, area
+FROM World
+WHERE EXISTS (
+              SELECT population, area
+              WHERE (population > 25000000) OR (area > 3000000)
+          )
 
 
 
