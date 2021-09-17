@@ -19,18 +19,6 @@ FROM Employee
 WHERE Salary NOT IN ( SELECT Max(Salary) FROM Employee);
 
 
--- https://leetcode.com/problems/nth-highest-salary/submissions/
--- Nth Highest Salary
-CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
-BEGIN SET N = N-1;
-RETURN (
-      SELECT DISTINCT Salary
-      FROM Employee
-      ORDER BY Salary DESC
-      LIMIT 1 OFFSET N
-    );
-END
-
 -- https://leetcode.com/problems/employees-earning-more-than-their-managers/
 -- Employees Earning More Than Their Managers
 SELECT Name AS Employee
@@ -46,6 +34,7 @@ JOIN Employee B
 ON B.Id = A.ManagerId
 WHERE A.Salary > B.Salary
 
+
 -- https://leetcode.com/problems/duplicate-emails/
 -- Duplicate Emails
 SELECT Email
@@ -59,6 +48,7 @@ FROM Person
 GROUP BY Email
 HAVING count(*) > 1
 
+
 -- https://leetcode.com/problems/customers-who-never-order/
 -- Customers Who Never Order
 SELECT Name AS Customers
@@ -71,6 +61,7 @@ FROM Customers A
 LEFT JOIN Orders B
 ON B.CustomerId = A.Id
 WHERE B.Id is null
+
 
 -- https://leetcode.com/problems/delete-duplicate-emails/submissions/
 -- Delete Duplicate Emails
@@ -100,7 +91,20 @@ WHERE EXISTS (
           )
 
 
-
+-- https://leetcode.com/problems/classes-more-than-5-students/
+-- Classes More Than 5 Students
+-- 개느림
+SELECT class
+FROM courses
+GROUP BY class
+HAVING count(distinct student) >= 5
+--
+SELECT class
+FROM (
+         SELECT distinct student, class
+         FROM courses) X
+GROUP BY class
+HAVING count(class)>=5
 
 
 
