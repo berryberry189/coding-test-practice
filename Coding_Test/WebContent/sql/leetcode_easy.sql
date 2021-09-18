@@ -107,6 +107,26 @@ GROUP BY class
 HAVING count(class)>=5
 
 
+-- https://leetcode.com/problems/not-boring-movies/
+-- Not Boring Movies
+SELECT *
+FROM Cinema
+WHERE id%2 <> 0
+AND description <> 'boring'
+ORDER BY rating DESC
+
+
+-- https://leetcode.com/problems/swap-salary/
+-- Swap Salary
+UPDATE salary
+SET sex =
+        CASE sex
+            when 'f' then 'm'
+            when 'm' then 'f'
+            else sex
+        END;
+
+
 
 
 
