@@ -34,3 +34,23 @@ FROM(
          , Lead(Num) OVER (ORDER By Id) as 'Lead'  -- Num + 1
     FROM Logs) L
 WHERE L.Num = L.Lag AND L.Lag = L.Lead
+
+
+-- https://leetcode.com/problems/department-highest-salary/
+-- Department Highest Salary
+SELECT d.Name AS Department
+     , m.Name AS Employee
+     , m.Maxsalary AS Salary
+FROM (  SELECT *, MAX(Salary) OVER (PARTITION BY DepartmentId) AS MaxSalary
+        FROM Employee ) m
+INNER JOIN Department d
+ON m.DepartmentId = d.Id
+WHERE m.Salary = m.Maxsalary
+
+
+
+
+
+
+
+
