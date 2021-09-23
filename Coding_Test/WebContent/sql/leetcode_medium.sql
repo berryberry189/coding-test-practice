@@ -48,6 +48,17 @@ ON m.DepartmentId = d.Id
 WHERE m.Salary = m.Maxsalary
 
 
+-- https://leetcode.com/problems/exchange-seats/
+-- Exchange Seats
+SELECT (CASE WHEN mod(id,2)=0 THEN id-1
+             WHEN id= (SELECT COUNT(*) FROM seat) then id
+             ELSE id+1 END) AS id, student
+FROM seat
+ORDER BY id ASC
+
+
+
+
 
 
 
