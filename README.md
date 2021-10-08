@@ -68,5 +68,5 @@
 
 ---
 
-## leetCode SQL 풀이
+## leetcode SQL 풀이
 
