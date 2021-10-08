@@ -68,5 +68,5 @@
 
 ---
 
-## leerCode SQL 풀이
+## leetCode SQL 풀이
 
