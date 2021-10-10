@@ -70,3 +70,18 @@
 
 ## leetcode SQL 풀이
 
+### 기록(21.10.10~)
+
+[185. Department Top Three Salaries](https://leetcode.com/problems/department-top-three-salaries/)
+```sql
+select d.Name as Department, e.Name as Employee, e.Salary
+from (
+    select *,
+        DENSE_RANK() OVER(PARTITION BY DepartmentId ORDER BY Salary DESC) as sal_rank
+    from Employee ) e
+inner join Department d
+on e.DepartmentId = d.Id
+where e.sal_rank <= 3
+
+```
+
