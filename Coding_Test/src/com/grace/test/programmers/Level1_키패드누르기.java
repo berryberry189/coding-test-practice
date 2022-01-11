@@ -58,7 +58,13 @@ public class Level1_키패드누르기 {
     }
 
     private static int getDistance(int location, int num) {
+        location = (location == 0) ? 11 : location;
+        num = (num == 0) ? 11 : num;
+        int x1 = (location-1)/3;
+        int y1 = (location-1)%3;
+        int x2 = (num-1)/3;
+        int y2 = (num-1)%3;
 
-        return (Math.abs(num - location))/3 + (Math.abs(num - location))%3;
+        return Math.abs(x1 - x2) +  Math.abs(y1 - y2);
     }
 }
