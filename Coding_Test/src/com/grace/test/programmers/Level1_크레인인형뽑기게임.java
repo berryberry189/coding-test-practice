@@ -2,7 +2,7 @@ package com.grace.test.programmers;
 
 import java.util.Stack;
 
-public class LEVEL1_크레인인형뽑기게임 {
+public class Level1_크레인인형뽑기게임 {
     // https://programmers.co.kr/learn/courses/30/lessons/64061
 
     public static void main(String[] args) {

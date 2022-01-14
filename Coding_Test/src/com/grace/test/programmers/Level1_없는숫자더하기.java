@@ -1,6 +1,6 @@
 package com.grace.test.programmers;
 
-public class LEVEL1_없는숫자더하기 {
+public class Level1_없는숫자더하기 {
 
     // https://programmers.co.kr/learn/courses/30/lessons/86051
 
