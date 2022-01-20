@@ -1,8 +1,6 @@
 package com.grace.test.programmers;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.*;
 
 public class Level1_신고결과받기 {
 
@@ -20,41 +18,33 @@ public class Level1_신고결과받기 {
 
     public static int[] solution(String[] id_list, String[] report, int k) {
         int[] answer = new int[id_list.length];
-        HashSet<String> reportSet = new HashSet<>(Arrays.asList(report));
-        // 신고한 회원 배열
-        ArrayList<ArrayList<String>> reports = new ArrayList<>();
-        // 신고한 회원 중 정지된 회원 배열 => 알림 받는 횟수
-        ArrayList<String> stopUsers = new ArrayList<>();
 
-        for (String id : id_list) {
-            int count = 0;
-            ArrayList<String> myReports = new ArrayList<>();
-            for (String r : reportSet) {
-                String[] arr = r.split(" ");
-                if(id.equals(arr[0])){
-                    myReports.add(arr[1]);
+        Map<String, Integer> index = new HashMap<>();
+        Map<String, List<Integer>> reportMap = new HashMap<>();
+
+        for(int i=0; i<id_list.length; i++){
+            index.put(id_list[i], i);
+        }
+
+        for (String r : report) {
+            String[] reportArr = r.split(" ");
+            String reporter = reportArr[0];
+            String target = reportArr[1];
+
+            if(!reportMap.containsKey(target)) reportMap.put(target, new ArrayList<>());
+            List<Integer> tmp = reportMap.get(target);
+            if(!tmp.contains(index.get(reporter))) tmp.add(index.get(reporter));
+        }
+
+        for(int i=0 ; i<id_list.length ; i++) {
+            String id = id_list[i];
+            if(reportMap.containsKey(id) && reportMap.get(id).size()>=k) {
+                for(int idx : reportMap.get(id)) {
+                    answer[idx]++;
                 }
-                if(id.equals(arr[1])){
-                    count ++;
-                }
-            }
-            reports.add(myReports);
-            if(count >= k){
-                stopUsers.add(id);
             }
         }
 
-        for(int i=0; i<reports.size(); i++){
-            int count = 0;
-            for (String user : stopUsers) {
-                for (String s : reports.get(i)) {
-                    if(s.equals(user)){
-                        count++;
-                    }
-                }
-            }
-            answer[i] = count;
-        }
         return answer;
     }
 
