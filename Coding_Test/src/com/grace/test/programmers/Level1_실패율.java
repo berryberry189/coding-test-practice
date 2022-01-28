@@ -1,7 +1,8 @@
 package com.grace.test.programmers;
 
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Level1_실패율 {
 
@@ -17,13 +18,28 @@ public class Level1_실패율 {
     }
 
     public static int[] solution(int N, int[] stages) {
-        int[] answer = new int[stages.length];
-
-        for (int stage : stages) {
-            
+        int[] answer = new int[N];
+        double userCnt = stages.length;
+        List<double[]> failRateList = new ArrayList<>();
+        int cnt = 0;
+        for(int i=1; i<=N; i++){
+            for (int j=0; j<stages.length; j++){
+                if(i == stages[j]) cnt++;
+            }
+            if(cnt == 0){
+                failRateList.add(new double[]{i, 0});
+                continue;
+            }
+            failRateList.add(new double[]{i, cnt/userCnt});
+            userCnt -= cnt;
+            cnt = 0;
         }
 
+        failRateList.sort((a,b)->Double.compare(b[1],a[1]));
 
+        for(int i=0;i<failRateList.size();i++){
+            answer[i]=(int)failRateList.get(i)[0];
+        }
 
         return answer;
     }
