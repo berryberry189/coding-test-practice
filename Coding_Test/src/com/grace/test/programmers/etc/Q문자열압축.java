@@ -1,4 +1,4 @@
-package com.grace.test.programmers;
+package com.grace.test.programmers.etc;
 
 public class Q문자열압축 {
 

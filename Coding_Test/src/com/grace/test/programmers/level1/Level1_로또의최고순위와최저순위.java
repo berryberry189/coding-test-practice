@@ -1,4 +1,4 @@
-package com.grace.test.programmers;
+package com.grace.test.programmers.level1;
 
 import java.util.Arrays;
 

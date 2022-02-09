@@ -1,4 +1,4 @@
-package com.grace.test.programmers;
+package com.grace.test.programmers.level1;
 
 public class Level1_숫자문자열과영단어 {
 

@@ -1,4 +1,4 @@
-package com.grace.test.programmers;
+package com.grace.test.programmers.level1;
 
 public class Level1_키패드누르기 {
 

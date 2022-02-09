@@ -1,4 +1,4 @@
-package com.grace.test.programmers;
+package com.grace.test.programmers.etc;
 
 public class Dev_2 {
 	static int[][] map;
