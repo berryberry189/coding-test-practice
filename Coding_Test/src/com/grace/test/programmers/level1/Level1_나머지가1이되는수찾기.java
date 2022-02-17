@@ -5,7 +5,6 @@ public class Level1_나머지가1이되는수찾기 {
     public static void main(String[] args) {
         int n = 2;
         System.out.println(solution(n));
-
     }
     public static int solution(int n) {
         int min = 0;
