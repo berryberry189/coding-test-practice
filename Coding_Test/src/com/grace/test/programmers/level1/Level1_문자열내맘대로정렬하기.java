@@ -3,7 +3,9 @@ package com.grace.test.programmers.level1;
 import java.util.*;
 
 public class Level1_문자열내맘대로정렬하기 {
+
     // https://programmers.co.kr/learn/courses/30/lessons/12915
+
     public static void main(String[] args) {
         String[] strings = {"sun", "bed", "car"}; int n = 1;
         String[] resultArr = solution(strings, n);
