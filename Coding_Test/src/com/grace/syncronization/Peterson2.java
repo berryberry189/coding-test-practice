@@ -13,8 +13,16 @@ public class Peterson2 {
             flag[i] = new AtomicBoolean();
     }
 
+    public static void main(String[] args) throws Exception {
+        Thread t1 = new Thread(new Producer2());
+        Thread t2 = new Thread(new Consumer2());
+        t1.start(); t2.start();
+        t1.join(); t2.join();
+        System.out.println(Peterson2.count);
+    }
 
-    static class Producer implements Runnable {
+
+    static class Producer2 implements Runnable {
         @Override
         public void run() {
             for (int k = 0; k < 100000; k++) {
@@ -31,7 +39,7 @@ public class Peterson2 {
             } }
     }
 
-    static class Consumer implements Runnable {
+    static class Consumer2 implements Runnable {
         @Override
         public void run() {
             for (int k = 0; k < 100000; k++) {
