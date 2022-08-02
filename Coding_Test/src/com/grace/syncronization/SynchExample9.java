@@ -1,13 +1,13 @@
 package com.grace.syncronization;
 
-public class SynchExample5 {
+public class SynchExample9 {
 
     static class Counter {
+        private static Object object = new Object();
         public static int count = 0;
         // static 제외
         public void increment() {
-            synchronized (this) {
-                //System.out.println("this -> " + this);
+            synchronized (object) {
                 Counter.count++;
             }
         }
@@ -28,14 +28,12 @@ public class SynchExample5 {
 
     public static void main(String[] args) throws Exception {
         Thread[] threads = new Thread[5];
-        Counter counter = new Counter();
         for (int i = 0; i < threads.length; i++) {
-                // 5개 모두 같은 카운터 참조
-            threads[i] = new Thread(new MyRunnable(counter));
+            // 카운터 인스턴스를 따로 만들어줌
+            threads[i] = new Thread(new MyRunnable(new Counter()));
             threads[i].start();
         }
         for (int i = 0; i < threads.length; i++)
             threads[i].join();
-        System.out.println("counter = " + Counter.count);
-    }
+        System.out.println("counter = " + Counter.count); }
 }
