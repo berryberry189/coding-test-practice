@@ -1,6 +1,7 @@
 package com.grace.syncronization.boundedbuffer;
 
-public class ConsRunner implements Runnable { CashBox cashBox;
+public class ConsRunner implements Runnable {
+    CashBox cashBox;
     public ConsRunner(CashBox cashBox) {
         this.cashBox = cashBox;
     }
