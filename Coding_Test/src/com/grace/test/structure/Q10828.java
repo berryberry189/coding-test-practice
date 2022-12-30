@@ -7,7 +7,7 @@ public class Q10828 {
     	// 스택
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
-        Stack<Integer> stack = new Stack<Integer>();
+        Stack<Integer> stack = new Stack<>();
         String command = "";
         for(int i=0; i<N; i++) {
             command = br.readLine();

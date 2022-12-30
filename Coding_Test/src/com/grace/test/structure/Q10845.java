@@ -16,7 +16,7 @@ public class Q10845 {
 		// 마지막에 입력되는값 저장
 		int last = 0;
 		
-		while(N --> 0) {
+		while(N-- > 0) {
 			String input = br.readLine();
 			if(input.contains("push")) {
 				int val =  Integer.parseInt(input.split(" ")[1]);
