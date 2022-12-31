@@ -5,7 +5,6 @@ public class Q10844 {
 	public static void main(String[] args) throws Exception {
 		// 쉬운 계단 수
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringBuilder sb = new StringBuilder();
 		int n = Integer.parseInt(br.readLine()); // n<=100
 		long div = 1000000000;
 		long[][] d = new long[n+1][10];
