@@ -1,4 +1,4 @@
-package com.grace.test.codility;
+package com.grace.test.codility.lesson6;
 
 import java.util.Arrays;
 

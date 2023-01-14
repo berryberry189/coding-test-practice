@@ -1,4 +1,4 @@
-package com.grace.test.codility;
+package com.grace.test.codility.lesson1;
 
 public class Lesson1_BinaryGap {
 

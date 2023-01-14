@@ -1,4 +1,4 @@
-package com.grace.test.codility;
+package com.grace.test.codility.lesson4;
 
 import java.util.HashSet;
 import java.util.Set;

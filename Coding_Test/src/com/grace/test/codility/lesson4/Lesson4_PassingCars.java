@@ -1,4 +1,4 @@
-package com.grace.test.codility;
+package com.grace.test.codility.lesson4;
 
 public class Lesson4_PassingCars {
   // https://app.codility.com/c/run/trainingYG62WZ-S6A/

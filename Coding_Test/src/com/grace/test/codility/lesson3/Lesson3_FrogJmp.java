@@ -1,4 +1,4 @@
-package com.grace.test.codility;
+package com.grace.test.codility.lesson3;
 
 public class Lesson3_FrogJmp {
   // https://app.codility.com/c/run/training8WZFHC-C7D/

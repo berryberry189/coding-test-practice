@@ -1,4 +1,4 @@
-package com.grace.test.codility;
+package com.grace.test.codility.lesson5;
 
 public class Lesson5_MinAvgTwoSlice {
 
