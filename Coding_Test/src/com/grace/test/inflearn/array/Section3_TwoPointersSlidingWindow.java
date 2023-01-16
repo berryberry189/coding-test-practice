@@ -12,9 +12,12 @@ public class Section3_TwoPointersSlidingWindow {
     System.out.println("Q1. 두 배열 합치기 : " + solution1(3, new int[]{1, 3, 5}, 5, new int[]{2, 3, 6, 7, 9}));
 
     // Q2. 공통원소 구하기
-    System.out.println("Q2. 공통원소 구하기: " +
+    System.out.println("Q2. 공통원소 구하기 : " +
         solution2(5, new int[]{1, 3, 9, 5, 2}, 5,  new int[]{3, 2, 5, 7, 8}));
 
+    // Q3. 최대 매출
+    System.out.println("Q3. 최대 매출 : " +
+        solution3(10, 3,  new int[]{12, 15, 11, 20, 25, 10, 20, 19, 13, 15}));
 
   }
 
@@ -59,6 +62,20 @@ public class Section3_TwoPointersSlidingWindow {
     }
 
     return answerList;
+  }
+
+  private static int solution3(int n, int k, int[] arr) {
+    int sum = 0;
+    for(int i=0; i<k; i++) {
+      sum += arr[i];
+    }
+    int max = sum;
+    for(int i=k; i<n; i++) {
+      sum += (arr[i] - arr[i-k]);
+      max = Math.max(max, sum);
+    }
+
+    return max;
   }
 
 
