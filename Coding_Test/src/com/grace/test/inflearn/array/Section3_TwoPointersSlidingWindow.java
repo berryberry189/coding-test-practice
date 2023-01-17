@@ -19,7 +19,13 @@ public class Section3_TwoPointersSlidingWindow {
     System.out.println("Q3. 최대 매출 : " +
         solution3(10, 3,  new int[]{12, 15, 11, 20, 25, 10, 20, 19, 13, 15}));
 
+    // Q4. 연속 부분수열
+    System.out.println("Q4. 연속 부분수열 : " +
+        solution4(8, 6,  new int[]{1, 2, 1, 3, 1, 1, 1, 2}));
+
+
   }
+
 
   // 투 포인터 알고리즘,,
   private static List<Integer> solution1(int n, int[] arr1, int m, int[] arr2) {
@@ -78,6 +84,20 @@ public class Section3_TwoPointersSlidingWindow {
     return max;
   }
 
+  private static int solution4(int n, int m, int[] arr) {
+    int answer = 0;
+    int sum = 0;
+    int lt = 0;
+    for(int rt=0; rt<n; rt++) {
+      sum += arr[rt];
+      if(sum == m) answer++;
+      while (sum >= m) {
+        sum -= arr[lt++];
+        if(sum == m) answer++;
+      }
+    }
+    return answer;
+  }
 
 
 }
