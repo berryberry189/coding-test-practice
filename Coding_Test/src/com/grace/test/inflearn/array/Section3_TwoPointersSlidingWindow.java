@@ -23,8 +23,11 @@ public class Section3_TwoPointersSlidingWindow {
     System.out.println("Q4. 연속 부분수열 : " +
         solution4(8, 6,  new int[]{1, 2, 1, 3, 1, 1, 1, 2}));
 
+    // Q5. 연속된 자연수의 합
+    System.out.println("Q5. 연속된 자연수의 합 : " + solution5(15));
 
   }
+
 
 
   // 투 포인터 알고리즘,,
@@ -94,6 +97,22 @@ public class Section3_TwoPointersSlidingWindow {
       while (sum >= m) {
         sum -= arr[lt++];
         if(sum == m) answer++;
+      }
+    }
+    return answer;
+  }
+
+  private static int solution5(int N) {
+    int answer = 0;
+    int lt = 1;
+    int sum = 0;
+
+    for(int rt=1; rt<= N/2+1; rt++) {
+      sum += rt;
+      if(sum == N) answer++;
+      while (sum >= N) {
+        sum -= lt++;
+        if(sum == N) answer++;
       }
     }
     return answer;
