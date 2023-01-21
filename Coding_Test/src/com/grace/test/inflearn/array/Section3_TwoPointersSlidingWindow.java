@@ -26,6 +26,10 @@ public class Section3_TwoPointersSlidingWindow {
     // Q5. 연속된 자연수의 합
     System.out.println("Q5. 연속된 자연수의 합 : " + solution5(15));
 
+    // Q6. 최대 길이 연속부분수열
+    System.out.println("Q6. 최대 길이 연속부분수열 : " +
+        solution6(14, 2, new int[]{1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1}));
+
   }
 
 
@@ -104,17 +108,32 @@ public class Section3_TwoPointersSlidingWindow {
 
   private static int solution5(int N) {
     int answer = 0;
-    int lt = 1;
-    int sum = 0;
-
-    for(int rt=1; rt<= N/2+1; rt++) {
-      sum += rt;
-      if(sum == N) answer++;
-      while (sum >= N) {
-        sum -= lt++;
-        if(sum == N) answer++;
-      }
+    int cnt = 1; // 연속된 자연수의 개수
+    // N = 15인 경우
+    N--;  // 14
+    while(N > 0){
+      cnt++; // 2 (연속된 2개의 자연수)
+      N = N - cnt; // 12
+      if(N % cnt == 0) answer++; // 12 % 2 == 0
     }
+
+    return answer;
+  }
+
+  private static int solution6(int N, int K, int[] arr) {
+    int answer = 0;
+    int cnt = 0; // 0을 1로 바꾼 회수
+    int lt = 0;
+
+    for(int rt=0; rt<N; rt++) {
+      if(arr[rt] == 0) cnt++;
+      while (cnt > K) {
+        if(arr[lt] == 0) cnt--;
+        lt++;
+      }
+      answer = Math.max(answer, rt-lt+1);
+    }
+
     return answer;
   }
 
