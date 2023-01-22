@@ -18,6 +18,9 @@ public class Section4_HashMap {
     System.out.println("Q3. 매출액의 종류 : " +
         solution3(7, 4, new int[]{20, 12, 20, 10, 23, 17, 10}));
 
+    // Q4. 모든 아나그램 찾기
+    System.out.println("Q4. 모든 아나그램 찾기 : " + solution4("bacaAacba",  "abc"));
+
   }
 
   private static Character solution1(int N, String str) {
@@ -75,6 +78,30 @@ public class Section4_HashMap {
     }
 
     return answerList;
+  }
+
+  private static int solution4(String str1, String str2) {
+    int answer = 0;
+    HashMap<Character, Integer> map1 = new HashMap<>();
+    HashMap<Character, Integer> map2 = new HashMap<>();
+    for(char c : str2.toCharArray()) {
+      map2.put(c, map2.getOrDefault(c, 0)+1);
+    }
+
+    int len = str2.length();
+    for(int i=0; i<len-1; i++) {
+      map1.put(str1.charAt(i), map1.getOrDefault(str1.charAt(i), 0)+1);
+    }
+    int lt = 0;
+    for(int rt=len-1; rt<str1.length(); rt++) {
+      map1.put(str1.charAt(rt), map1.getOrDefault(str1.charAt(rt), 0)+1);
+      if(map1.equals(map2)) answer++;
+      map1.put(str1.charAt(lt), map1.getOrDefault(str1.charAt(lt), 0)-1);
+      if(map1.get(str1.charAt(lt)) == 0) map1.remove(str1.charAt(lt));
+      lt++;
+    }
+
+    return answer;
   }
 
 
