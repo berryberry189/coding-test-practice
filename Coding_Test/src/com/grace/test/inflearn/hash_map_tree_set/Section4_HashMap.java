@@ -1,8 +1,10 @@
 package com.grace.test.inflearn.hash_map_tree_set;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TreeSet;
 
 public class Section4_HashMap {
 
@@ -20,6 +22,10 @@ public class Section4_HashMap {
 
     // Q4. 모든 아나그램 찾기
     System.out.println("Q4. 모든 아나그램 찾기 : " + solution4("bacaAacba",  "abc"));
+
+    // Q5. K번째 큰 수
+    System.out.println("Q5. K번째 큰 수 : " +
+        solution5(10, 3, new int[]{13, 15, 34, 23, 45, 65, 33, 11, 26, 42}));
 
   }
 
@@ -103,6 +109,26 @@ public class Section4_HashMap {
 
     return answer;
   }
+
+  private static int solution5(int N, int K, int[] arr) {
+    int answer = -1;
+    TreeSet<Integer> set = new TreeSet<>(Collections.reverseOrder());
+    for(int i=0; i<N; i++) {
+      for(int j= i+1; j<N; j++){
+        for(int l= j+1; l<N; l++) {
+          set.add(arr[i] + arr[j] + arr[l]);
+        }
+      }
+    }
+    int cnt = 0;
+    for(int num : set) {
+      cnt++;
+      if(cnt == K) return num;
+    }
+
+    return answer;
+  }
+
 
 
 }
