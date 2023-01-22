@@ -1,6 +1,8 @@
 package com.grace.test.inflearn.hash_map_tree_set;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Section4_HashMap {
 
@@ -11,6 +13,10 @@ public class Section4_HashMap {
     // Q2. 아나그램(해쉬)
     System.out.println("Q2. 아나그램(해쉬) 1 : " + solution2("AbaAeCe",  "baeeACA"));
     System.out.println("Q2. 아나그램(해쉬) 2 : " + solution2("abaCC",  "Caaab"));
+
+    // Q3. 매출액의 종류
+    System.out.println("Q3. 매출액의 종류 : " +
+        solution3(7, 4, new int[]{20, 12, 20, 10, 23, 17, 10}));
 
   }
 
@@ -51,6 +57,24 @@ public class Section4_HashMap {
     }
 
     return answer;
+  }
+
+  private static List<Integer> solution3(int N, int K, int[] arr) {
+    List<Integer> answerList = new ArrayList<>();
+    HashMap<Integer, Integer> map = new HashMap<>();
+    for(int i=0; i<K-1; i++) {
+      map.put(arr[i], map.getOrDefault(arr[i], 0)+1);
+    }
+    int lt = 0;
+    for(int rt=K-1; rt<N; rt++) {
+      map.put(arr[rt], map.getOrDefault(arr[rt], 0)+1);
+      answerList.add(map.size());
+      map.put(arr[lt],  map.getOrDefault(arr[lt], 0)-1);
+      if(map.get(arr[lt]) == 0) map.remove(arr[lt]);
+      lt++;
+    }
+
+    return answerList;
   }
 
 
