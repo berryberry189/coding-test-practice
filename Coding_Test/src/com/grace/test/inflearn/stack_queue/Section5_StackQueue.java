@@ -13,6 +13,11 @@ public class Section5_StackQueue {
     // Q2. 괄호문자제거
     System.out.println("Q2. 괄호문자제거: " + solution2("(A(BC)D)EF(G(H)(IJ)K)LM(N)"));
 
+    // Q3. 크레인 인형뽑기(카카오)
+    System.out.println("Q3. 크레인 인형뽑기(카카오): " +
+        solution3(5, new int[][]{{0, 0, 0, 0, 0}, {0, 0, 1, 0, 3}, {0, 2, 5, 0, 1}, {4, 2, 4, 4, 2}, {3, 5, 1, 3, 1}},
+            9, new int[]{1, 5, 3, 5, 1, 2, 1, 4}));
+
   }
 
   private static String solution1(String str) {
@@ -50,6 +55,29 @@ public class Section5_StackQueue {
       sb.append(c);
     }
     return sb.toString();
+  }
+
+  private static int solution3(int N, int[][] arr, int M, int[] moves) {
+    int answer = 0;
+    Stack<Integer> stack = new Stack<>();
+
+    for(int position : moves) {
+      for(int i=0; i<N; i++) {
+        if(arr[i][position-1] != 0) {
+          int item = arr[i][position - 1];
+          arr[i][position - 1] = 0;
+          if(!stack.empty() && stack.peek() == item) {
+            stack.pop();
+            answer+=2;
+          } else {
+            stack.push(item);
+          }
+          break;
+        }
+      }
+    }
+
+    return answer;
   }
 
 }
