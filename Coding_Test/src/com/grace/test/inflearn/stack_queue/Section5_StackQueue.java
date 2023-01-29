@@ -18,6 +18,9 @@ public class Section5_StackQueue {
         solution3(5, new int[][]{{0, 0, 0, 0, 0}, {0, 0, 1, 0, 3}, {0, 2, 5, 0, 1}, {4, 2, 4, 4, 2}, {3, 5, 1, 3, 1}},
             9, new int[]{1, 5, 3, 5, 1, 2, 1, 4}));
 
+    // Q4. 후위식 연산(postfix)
+    System.out.println("Q4. 후위식 연산(postfix): " + solution4("352+*9-"));
+
   }
 
   private static String solution1(String str) {
@@ -77,6 +80,34 @@ public class Section5_StackQueue {
       }
     }
 
+    return answer;
+  }
+
+  private static int solution4(String str) {
+    int answer = 0;
+    Stack<Integer> stack = new Stack<>();
+    for(char c : str.toCharArray()) {
+      if(Character.isDigit(c)) {
+        stack.push(c-48);
+      }
+      else {
+        int rt = stack.pop();
+        int lt = stack.pop();
+        if(c == '+') {
+          stack.push(lt + rt);
+        }
+        else if(c == '-') {
+          stack.push(lt - rt);
+        }
+        else if(c == '*') {
+          stack.push(lt * rt);
+        }
+        else if(c == '/') {
+          stack.push(lt / rt);
+        }
+      }
+    }
+    answer = stack.get(0);
     return answer;
   }
 
