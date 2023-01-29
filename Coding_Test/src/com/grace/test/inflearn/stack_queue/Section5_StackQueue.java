@@ -21,6 +21,10 @@ public class Section5_StackQueue {
     // Q4. 후위식 연산(postfix)
     System.out.println("Q4. 후위식 연산(postfix): " + solution4("352+*9-"));
 
+    // Q5. 쇠막대기
+    System.out.println("Q5. 쇠막대기: " + solution5("()(((()())(())()))(())"));
+    System.out.println("Q5. 쇠막대기: " + solution5("(((()(()()))(())()))(()())"));
+
   }
 
   private static String solution1(String str) {
@@ -87,7 +91,7 @@ public class Section5_StackQueue {
     int answer = 0;
     Stack<Integer> stack = new Stack<>();
     for(char c : str.toCharArray()) {
-      if(Character.isDigit(c)) {
+      if(Character.isDigit(c)) { // 슷자인지 체크
         stack.push(c-48);
       }
       else {
@@ -108,6 +112,25 @@ public class Section5_StackQueue {
       }
     }
     answer = stack.get(0);
+    return answer;
+  }
+
+  private static int solution5(String str) {
+    int answer = 0;
+    Stack<Character> stack = new Stack<>();
+    for(int i=0; i<str.length(); i++) {
+      if(str.charAt(i) =='(') {
+        stack.push(str.charAt(i));
+      } else {
+        stack.pop();
+        if(str.charAt(i-1) == '(') {
+          answer += stack.size();
+        } else {
+          answer ++;
+        }
+      }
+    }
+
     return answer;
   }
 
