@@ -31,7 +31,7 @@ public class Section5_StackQueue {
     System.out.println("Q6. 공주 구하기: " + solution6(8, 3));
 
     // Q7. 교육과정 설계
-    System.out.println("Q6. 공주 구하기: " + solution7("CBA", "CBDAGE"));
+    System.out.println("Q7. 교육과정 설계: " + solution7("CBA", "CBDAGE"));
 
 
   }
@@ -160,17 +160,17 @@ public class Section5_StackQueue {
   }
 
   private static String solution7(String need, String plan) {
-    String answer = "NO";
+    String answer = "YES";
     Queue<Character> queue = new LinkedList<>();
-    for(int i=0; i<need.length(); i++) {
-      queue.offer(need.charAt(i));
+    for(char c : need.toCharArray()) {
+      queue.offer(c);
     }
-    for(int i=0; i<plan.length(); i++) {
-      if(!queue.isEmpty() && plan.charAt(i) == queue.peek()) {
-        queue.poll();
+    for(char c : plan.toCharArray()) {
+      if(queue.contains(c) && c != queue.poll()) {
+        return "NO";
       }
     }
-    if(queue.isEmpty()) answer = "YES";
+    if(!queue.isEmpty()) answer = "NO";
     return answer;
   }
 
