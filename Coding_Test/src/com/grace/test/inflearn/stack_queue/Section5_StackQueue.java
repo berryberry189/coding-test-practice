@@ -1,5 +1,7 @@
 package com.grace.test.inflearn.stack_queue;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class Section5_StackQueue {
@@ -24,6 +26,10 @@ public class Section5_StackQueue {
     // Q5. 쇠막대기
     System.out.println("Q5. 쇠막대기: " + solution5("()(((()())(())()))(())"));
     System.out.println("Q5. 쇠막대기: " + solution5("(((()(()()))(())()))(()())"));
+
+    // Q6. 공주 구하기
+    System.out.println("Q6. 공주 구하기: " + solution6(8, 3));
+
 
   }
 
@@ -123,7 +129,7 @@ public class Section5_StackQueue {
         stack.push(str.charAt(i));
       } else {
         stack.pop();
-        if(str.charAt(i-1) == '(') {
+        if(str .charAt(i-1) == '(') {
           answer += stack.size();
         } else {
           answer ++;
@@ -131,6 +137,22 @@ public class Section5_StackQueue {
       }
     }
 
+    return answer;
+  }
+
+  private static int solution6(int N, int K) {
+    int answer = 0;
+    Queue<Integer> queue = new LinkedList<>();
+    for(int i=1; i<=N; i++) {
+      queue.add(i);
+    }
+    while (!queue.isEmpty()) {
+      for(int i=1; i<K; i++) {
+        queue.offer(queue.poll());
+      }
+      queue.poll();
+      if(queue.size() == 1) answer = queue.poll();
+    }
     return answer;
   }
 
