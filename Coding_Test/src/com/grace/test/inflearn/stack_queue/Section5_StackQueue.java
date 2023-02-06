@@ -34,6 +34,10 @@ public class Section5_StackQueue {
     System.out.println("Q7. 교육과정 설계: " + solution7("CBA", "CBDAGE"));
 
 
+    // Q8. 응급실
+    System.out.println("Q8. 응급실: " + solution8(5, 2, new int[]{60, 50, 70, 80, 90}));
+    System.out.println("Q8. 응급실: " + solution8(6, 3, new int[]{70, 60, 90, 60, 60, 60}));
+
   }
 
   private static String solution1(String str) {
@@ -174,4 +178,38 @@ public class Section5_StackQueue {
     return answer;
   }
 
+  private static int solution8(int N, int M, int[] arr) {
+    int answer = 1;
+    Queue<Person> queue = new LinkedList<>();
+    for(int i=0; i<N; i++) {
+      queue.offer(new Person(i, arr[i]));
+    }
+    while (!queue.isEmpty()) {
+      Person tmp = queue.poll();
+      for(Person p : queue) {
+        if(p.priority > tmp.priority) {
+          queue.add(tmp);
+          tmp = null;
+          break;
+        }
+      }
+      if(tmp!=null) {
+        if(tmp.index == M) return answer;
+        else answer++;
+      }
+    }
+
+    return answer;
+  }
+
+}
+
+class Person {
+  int index;
+  int priority;
+
+  public Person(int index, int priority) {
+    this.index = index;
+    this.priority = priority;
+  }
 }
