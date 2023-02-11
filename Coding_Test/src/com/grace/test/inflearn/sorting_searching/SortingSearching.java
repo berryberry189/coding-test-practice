@@ -15,6 +15,11 @@ public class SortingSearching {
     // Q3. 삽입 정렬
     System.out.println("Q3. 삽입 정렬 : " + Arrays.toString(solution3(6, new int[]{13, 5, 11, 7, 23, 15})));
 
+    // Q4. Least Recently Used
+    System.out.println("Q4. Least Recently Used : " + Arrays.toString(solution4(5, 9, new int[]{1, 2, 3, 2, 6, 2, 3, 5, 7})));
+
+
+
   }
 
   // 1. 선택 정렬
@@ -53,14 +58,14 @@ public class SortingSearching {
     return arr;
   }
 
-  // 3. 삽입 정렬
-  // 자료 배열의 모든 요소를 앞에서부터 차례대로 이미 정렬된 배열 부분과 비교 하여,
-  // 자신의 위치를 찾아 삽입함으로써 정렬을 완성하는 알고리즘
+  // 4. Least Recently Used
+  // 가장 최근데 사용되지 않은 것을 제거
   private static int[] solution3(int N, int[] arr) {
     for(int i=1; i<N; i++) {
       int tmp = arr[i];
       int j;
       for(j=i-1; j>=0; j--) {
+
         if(arr[j] > tmp) {
           arr[j+1] = arr[j];
         } else  {
@@ -71,5 +76,29 @@ public class SortingSearching {
     }
     return arr;
   }
+
+  // 3. 삽입 정렬
+  private static int[] solution4(int S, int N, int[] arr) {
+    // 현재 작업이 항상 캐시의 0번에 삽입됨
+    int[] cache = new int[S];
+    for(int num : arr) {
+      int idx = -1;
+      for(int i=0; i<S; i++) {
+        if(num == cache[i]) idx = i;
+      }
+      if(idx == -1) { // miss 상황
+        for(int i= S-1; i>=1; i--) {
+          cache[i] = cache[i-1];
+        }
+      } else { // hit 상황
+        for(int i= idx; i>=1; i--) {
+          cache[i] = cache[i-1];
+        }
+      }
+      cache[0] = num;
+    }
+    return cache;
+  }
+
 
 }
