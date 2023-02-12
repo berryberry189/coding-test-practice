@@ -18,6 +18,8 @@ public class SortingSearching {
     // Q4. Least Recently Used
     System.out.println("Q4. Least Recently Used : " + Arrays.toString(solution4(5, 9, new int[]{1, 2, 3, 2, 6, 2, 3, 5, 7})));
 
+    // Q5. 중복 확인
+    System.out.println("Q5. 중복 확인 : " + solution5(8, new int[]{20, 25, 52, 30, 39, 33, 43, 33}));
 
 
   }
@@ -98,6 +100,15 @@ public class SortingSearching {
       cache[0] = num;
     }
     return cache;
+  }
+
+  private static String solution5(int N, int[] arr) {
+    String answer = "U";
+    Arrays.sort(arr);
+    for(int i=0; i<N-1; i++) {
+      if(arr[i] == arr[i+1]) return "D";
+    }
+    return answer;
   }
 
 
