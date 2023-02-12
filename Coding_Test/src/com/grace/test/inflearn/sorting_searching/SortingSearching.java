@@ -21,6 +21,9 @@ public class SortingSearching {
     // Q5. 중복 확인
     System.out.println("Q5. 중복 확인 : " + solution5(8, new int[]{20, 25, 52, 30, 39, 33, 43, 33}));
 
+    // Q6. 장난꾸러기
+    System.out.println("Q6. 장난꾸러기 : " + solution6(9, new int[]{120, 125, 152, 130, 135, 135, 143, 127, 160}));
+
 
   }
 
@@ -109,6 +112,16 @@ public class SortingSearching {
       if(arr[i] == arr[i+1]) return "D";
     }
     return answer;
+  }
+
+  private static String solution6(int N, int[] arr) {
+    StringBuilder sb = new StringBuilder();
+    int[] tempArr = arr.clone();
+    Arrays.sort(tempArr);
+    for(int i=0; i<N; i++) {
+      if(arr[i] != tempArr[i]) sb.append(i+1).append(" ");
+    }
+    return sb.toString();
   }
 
 
