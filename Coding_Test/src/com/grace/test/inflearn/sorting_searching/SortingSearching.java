@@ -24,6 +24,9 @@ public class SortingSearching {
     // Q6. 장난꾸러기
     System.out.println("Q6. 장난꾸러기 : " + solution6(9, new int[]{120, 125, 152, 130, 135, 135, 143, 127, 160}));
 
+    // Q8. 이분검색
+    System.out.println("Q8. 이분검색 : " + solution8(8, 32, new int[]{23, 87, 65, 12, 57, 32, 99, 81}));
+
 
   }
 
@@ -122,6 +125,31 @@ public class SortingSearching {
       if(arr[i] != tempArr[i]) sb.append(i+1).append(" ");
     }
     return sb.toString();
+  }
+
+  // 이분검색
+  // 배열의 중간에 있는 임의의 값을 선택(X)하여 찾고자 하는 값 X와 비교한다
+  // X가 중간 값보다 작으면 중간 값을 기준으로 좌측의 데이터들을 대상으로,
+  // X가 중간값보다 크면 배열의 우측을 대상으로 다시 탐색한다
+  // 해당 값을 찾을 때까지 동일한 방법으로 다시 중간의 값을 임의로 선택하고 비교한다
+  private static int solution8(int N, int M, int[] arr) {
+    int answer = 0;
+    Arrays.sort(arr);
+    int lt = 0, rt = N - 1;
+    while (lt <= rt) {
+      int mid = (lt + rt) / 2;
+      if(arr[mid] == M) {
+        answer = mid + 1;
+        break;
+      }
+      if(arr[mid] > M){
+        rt = mid - 1;
+      }
+      else {
+        lt = mid + 1;
+      }
+    }
+    return answer;
   }
 
 
