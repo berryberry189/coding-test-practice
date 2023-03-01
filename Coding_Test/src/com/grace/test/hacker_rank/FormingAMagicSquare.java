@@ -34,7 +34,7 @@ public class FormingAMagicSquare {
       }
     });
 
-    int result = Result.formingMagicSquare(s);
+    int result = ResultFormingMagicSquare.formingMagicSquare(s);
 
     bufferedWriter.write(String.valueOf(result));
     bufferedWriter.newLine();
@@ -46,7 +46,7 @@ public class FormingAMagicSquare {
 
 }
 
-class Result {
+class ResultFormingMagicSquare {
   public static int formingMagicSquare(List<List<Integer>> s) {
     int result = Integer.MAX_VALUE;
     int[][][] magicSquare = {
