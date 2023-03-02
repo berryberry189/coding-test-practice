@@ -6,28 +6,28 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-public class Section8_Q1합이같은부분집합DFS {
+public class Section8_Q2바둑이승차DFS {
 
-  static String answer = "NO";
-  static boolean flag = false;
-  static int n, total = 0;
+  static int answer = Integer.MIN_VALUE, limit, n;
 
   public static void main(String[] args) throws IOException {
 
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    n = Integer.parseInt(bufferedReader.readLine());
-
     String[] arrStr = bufferedReader.readLine().split(" ");
+    // 트럭의 제한 무게
+    limit = Integer.parseInt(arrStr[0]);
+
+    // 바둑이 마리수
+    n = Integer.parseInt(arrStr[1]);
 
     int[] arr = new int[n];
     for(int i=0; i<n; i++) {
-      arr[i] = Integer.parseInt(arrStr[i]);
-      total += arr[i];
+      arr[i] = Integer.parseInt(bufferedReader.readLine());
     }
 
-    section8_1Solution(0, 0, arr);
+    section8_2Solution(0, 0, arr);
 
     bufferedWriter.write("answer :" + answer);
     bufferedWriter.newLine();
@@ -37,18 +37,14 @@ public class Section8_Q1합이같은부분집합DFS {
 
   }
 
-  public static void section8_1Solution(int index, int sum, int[] arr) {
-    if(flag) return;
-    if(sum > total/2) return;
+  public static void section8_2Solution(int index, int sum, int[] arr) {
+    if(sum > limit) return;
     if(index == n) {
-      if((total - sum) == sum) {
-        flag = true;
-        answer = "YES";
-      }
+      answer = Math.max(answer, sum);
     }
     else {
-      section8_1Solution(index + 1, sum + arr[index], arr);
-      section8_1Solution(index + 1, sum, arr);
+      section8_2Solution(index + 1, sum + arr[index], arr);
+      section8_2Solution(index + 1, sum, arr);
     }
 
   }
